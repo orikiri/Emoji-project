@@ -21,7 +21,7 @@ function Pagination({totalCards, cardsPerPage, paginate, firstPage, lastPage, cu
             <ul className={classes.pagination_container}>
                 <button className={classes.btn} onClick={firstPage}>First</button>
                 {pageNumbers.map((number) => (
-                    <a href='!#' onClick={() => paginate(number)} key={number}>
+                    <a href='#' onClick={() => paginate(number)} key={number}>
                         <li className={`${currentPage === number ? 'active' : ''}`}>{number}</li>
                     </a>
                 ))}
