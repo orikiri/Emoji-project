@@ -2,14 +2,14 @@ import React from 'react'
 import classes from './Container.module.css'
 
 
-function Container({data}) {
+function Container({emojiList}) {
   return (
     <div>
         <div className={classes.container}>
         
         <section>
         <div className={classes.cards}>
-            {data.map((elem, index) => (
+            {emojiList.map((elem, index) => (
                 <div className={classes.card} key={index}>
                   <div className={classes.card_ind}>
                     <p className={classes.symbol}>{elem.symbol}</p>

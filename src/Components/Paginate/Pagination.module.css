@@ -29,28 +29,18 @@
     padding: 0;
     width: 100%;
 }
-li {
-    list-style: none;
-    padding: .75rem 1rem;
-    border: 1px solid #DEE2E6;
-    background-color: #fff;
-}
-li:hover, .btn:hover {
+
+button:hover {
     border: 1px solid #055160;
 }
-.btn {
-    padding: 12px 14px;
+button {
+    padding: .75rem 1rem;
     border: 1px solid #DEE2E6;
     background-color: #fff;
     cursor: pointer;
     color: #055160;
     font-family: 'Inter';
     font-size: 1rem;
-}
-
-a {
-    text-decoration: none;
-    color: #055160;
 }
 
 .perPageFilter {

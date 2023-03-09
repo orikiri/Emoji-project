@@ -7,10 +7,12 @@ import Pagination from './Components/Paginate/Pagination';
 import Inputbar from './Components/Inputbar/Inputbar';
 import axios from 'axios';
 
+
 function App() {
+  // ------- H O O K S ------ //
   const [data, setData] = useState([]);
-  const [allEmoji, setAllEmoji] = useState([])
-  const [title, setTitle] = useState('');
+  const [searchValue, setSearchValue] = useState('');
+
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(12);
   
@@ -25,45 +27,29 @@ function App() {
   useEffect(() => {
     axios.get('https://63f4e81e55677ef68bc677d9.mockapi.io/emoji')
     .then((response) => {
-      setData(response.data); setAllEmoji(response.data); // прописываем так, ибо респонс - это объект, а в нем есть ключ дата, где есть все эмоджи - выводим их
+      setData(response.data); // прописываем так, ибо респонс - это объект, а в нем есть ключ дата, где есть все эмоджи - выводим их
     })
   }, [])
 
+  // ------ C O N S T S ------ //
   const lastCardIndex = currentPage * cardsPerPage;
   const firstCardIndex = lastCardIndex - cardsPerPage;
-  const currentCards = data.slice(firstCardIndex,lastCardIndex);
+  const currentCards = Math.ceil(data.length / cardsPerPage)
 
+  const filteredEmoji = data.filter((elem) => {
+    const fullSearch = searchValue.split(' ');
+    return fullSearch.every((word) => elem.title.toLowerCase().includes(word.toLowerCase()))
+  })
 
-  function paginate(pageNum) {
-    setCurrentPage(pageNum)
-  }
-  function firstPage() {
-    setCurrentPage(1)
-  }
-  function lastPage() {
-    setCurrentPage(9)
-  }
-  function searchEmoji(event) {
-    let inputValue = event.target.value.trim()
-    let searchValues = inputValue.split(' ')
-    let newDataEmojies = allEmoji;
-
-    searchValues.forEach((inputWord) => {
-      newDataEmojies = newDataEmojies.filter((emoji) => {
-        return emoji.title.toLowerCase() === '' ? emoji : emoji.title.toLowerCase().includes(inputWord)
-      })
-    })
-    setData(newDataEmojies)
-  }
+  const emojiList = filteredEmoji.slice(firstCardIndex, lastCardIndex)
     
-
 
   return (
     <div className="App">
       <Header />
-      <Inputbar setTitle={setTitle} searchEmoji={searchEmoji}/>
-      <Container data={currentCards} title={title} allData={data}/>
-      <Pagination totalCards={data.length} cardsPerPage={cardsPerPage} paginate={paginate} firstPage={firstPage} lastPage={lastPage} currentPage={currentPage} setCardsPerPage={setCardsPerPage}/>
+      <Inputbar setCurrentPage={setCurrentPage} setSearchValue={setSearchValue} />
+      <Container emojiList={emojiList}/>
+      <Pagination totalCards={data.length} cardsPerPage={cardsPerPage} currentCards={currentCards} currentPage={currentPage} setCardsPerPage={setCardsPerPage} setCurrentPage={setCurrentPage}/>
     </div>
     )
   }

@@ -29,7 +29,7 @@ body {
   align-items: center;
 }
 
-li.active {
+button.active {
   background-color: #055160;
   color: #fff;
 }
