@@ -63,12 +63,14 @@ button {
 
 .perPageFilter::after {
     content: '▼';
+    font-size: 1rem;
     position: absolute;
     top: 50%;
     right: .75rem;
     transform: translate(-50%, -50%);
-    color: #DEE2E6;
+    color: #DEE2E6; 
 }
+
 select {
     max-width: 100px;
     width: 100%;
@@ -76,11 +78,12 @@ select {
     font-size: 1rem;
     color: #3F444A;
     -webkit-appearance: none;
-    appearance: none ;
+    appearance: none ; 
     cursor: pointer;
     outline: 0;
     border: 0;
     font-family: 'Inter';
+    
 }
 
 select::-ms-expand {

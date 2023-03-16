@@ -3,7 +3,7 @@ import classes from './Pagination.module.css'
 import '../../App.css'
 
 
-function Pagination({totalCards, cardsPerPage, currentPage, setCurrentPage, setCardsPerPage, currentCards}) {
+function Pagination({totalCards, cardsPerPage, setCardsPerPage, currentPage, setCurrentPage, currentCards}) {
     
         let startPage = 0;
         let endPage = 0;
@@ -56,7 +56,7 @@ function Pagination({totalCards, cardsPerPage, currentPage, setCurrentPage, setC
                     <option>15</option>
                     <option>21</option>
                     <option>24</option>
-                    <option>51</option>
+                    <option>50</option>
                 </select>
             </div>
     </div>

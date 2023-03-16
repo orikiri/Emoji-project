@@ -47,9 +47,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Inputbar setCurrentPage={setCurrentPage} setSearchValue={setSearchValue} />
-      <Container emojiList={emojiList}/>
-      <Pagination totalCards={data.length} cardsPerPage={cardsPerPage} currentCards={currentCards} currentPage={currentPage} setCardsPerPage={setCardsPerPage} setCurrentPage={setCurrentPage}/>
+      <Inputbar 
+        setCurrentPage={setCurrentPage} 
+        setSearchValue={setSearchValue} />
+      <Container  
+        emojiList={emojiList}/>
+      <Pagination 
+        totalCards={data.length} 
+        cardsPerPage={cardsPerPage} 
+        setCardsPerPage={setCardsPerPage} 
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage} 
+        currentCards={currentCards}/>
     </div>
     )
   }
